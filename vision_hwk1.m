@@ -9,8 +9,8 @@ clear all;close all;clc;
 
 % Display a menu and get a choice
 choice = menu('Choose an option', 'Exit Program', 'Load Image', ...
-    'Display Image', 'Mean Filter',' makeBright_L',' makeBright_NL','Task3','Task4','Task5', ...
-    'Task6','Task7','Task8','Task9','Task10','Task11','Task12',...
+    'Display Image', 'Mean Filter',' makeBright_L',' makeBright_NL','Invert_L','invert_NL','addRandomNoise_L', ...
+    'addRandomNoise_NL','Task7','Task8','Task9','Task10','Task11','Task12',...
     'Task13','Task14','Task15','Task16','Task17');  % as you develop functions, add buttons for them here
  
 % Choice 1 is to exit the program
@@ -20,7 +20,8 @@ while choice ~= 1
            disp('Error - please choose one of the options.')
            % Display a menu and get a choice
            choice = menu('Choose an option', 'Exit Program', 'Load Image', ...
-    'Display Image', 'Mean Filter',' makeBright_L',' makeBright_NL');  % as you develop functions, add buttons for them here
+    'Display Image', 'Mean Filter',' makeBright_L',' makeBright_NL','Invert_L','invert_NL','addRandomNoise_L',...
+    'addRandomNoise_NL');  % as you develop functions, add buttons for them here
         case 2
            % Load an image
            image_choice = menu('Choose an image', 'lena1', 'mandril1', 'sully', 'yoda', 'shrek');
@@ -70,18 +71,10 @@ while choice ~= 1
             dlgtitle = 'Brighten Input';
             dims = 1;
             answer = inputdlg(prompt,dlgtitle,dims);
-            
             brightness1 = str2num(answer{1});
-           
             output_L = makeBright_L(current_img,brightness1);
             subplot(1,2,1),imshow(current_img)
             subplot(1,2,2),imshow(output_L)
-%             imshow(outPut_L);
-            
-           
-           
-         
-       %....
        case 6
            
             brightness2 = 0;
@@ -93,19 +86,34 @@ while choice ~= 1
             output_NL= makeBright_NL(current_img, brightness2);
             subplot(1,2,1),imshow(current_img)
             subplot(1,2,2),imshow(output_NL)
-%           imshow(outPut_NL);
-            
-            
+        
+       case 7
+           outputInvert_L =  invert_L (current_img);
+           subplot(1,2,1),imshow(current_img)
+           subplot(1,2,2),imshow(outputInvert_L);
+      
+       case 8
+           outputInvert_NL =  invert_NL (current_img);
+           subplot(1,2,1),imshow(current_img)
+           subplot(1,2,2),imshow(outputInvert_NL);
            
+       case 9
+           outputAddNoise_L = addRandomNoise_L (current_img);
+           subplot(1,2,1),imshow(current_img)
+           subplot(1,2,2),imshow(outputAddNoise_L);
            
+       case 10
+           outputAddNoise_NL = addRandomNoise_NL (current_img);
+           subplot(1,2,1),imshow(current_img)
+           subplot(1,2,2),imshow(outputAddNoise_NL);
            
-%            makeBright_NL(current_img, 100)
+
    end
    % Display menu again and get user's choice
 %    choice = menu('Choose an option', 'Exit Program', 'Load Image', ...
 %     'Display Image', 'Mean Filter');  % as you develop functions, add buttons for them here
     choice = menu('Choose an option', 'Exit Program', 'Load Image', ...
-    'Display Image', 'Mean Filter',' makeBright_L',' makeBright_NL','Task3','Task4','Task5', ...
-    'Task6','Task7','Task8','Task9','Task10','Task11','Task12',...
+    'Display Image', 'Mean Filter',' makeBright_L',' makeBright_NL','Invert_L','invert_NL','addRandomNoise_L', ...
+    'addRandomNoise_NL','Task7','Task8','Task9','Task10','Task11','Task12',...
     'Task13','Task14','Task15','Task16','Task17');  % as you develop functions, add buttons for them here
 end
