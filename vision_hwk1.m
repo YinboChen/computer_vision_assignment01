@@ -144,13 +144,17 @@ while choice ~= 1
             dlgtitle = 'Red Filter Input';
             dims = 1;
             answer = inputdlg(prompt,dlgtitle,dims);
-            redVal = str2num(answer{1})  
+            redVal = str2num(answer{1});  
             outputRedFilter = redFilter (current_img,redVal);
             drawSubplots(current_img,outputRedFilter);
       
        case 14
             outputBinaryMask = binaryMask (current_img);
-            drawSubplots(current_img,outputBinaryMask);
+            outputBinaryMaskCompared = binaryMaskCompared (current_img);
+            subplot(1,3,1),imshow(current_img)
+            subplot(1,3,2),imshow(outputBinaryMaskCompared)
+            subplot(1,3,3),imshow(outputBinaryMask);
+%           drawSubplots(current_img,outputBinaryMask);
          
            
 
