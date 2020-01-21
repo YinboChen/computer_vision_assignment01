@@ -5,12 +5,14 @@
 % Yinbo Chen
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-clear all;close all;clc;
+clear all;
+close all;
+clc;
 
 % Display a menu and get a choice
 choice = menu('Choose an option', 'Exit Program', 'Load Image', ...
     'Display Image', 'Mean Filter',' makeBright_L',' makeBright_NL','Invert_L','invert_NL','addRandomNoise_L', ...
-    'addRandomNoise_NL','luminance_L','luminance_NL','redFilter','redFilter2','Task11','Task12',...
+    'addRandomNoise_NL','luminance_L','luminance_NL','redFilter','binaryMask','Task11','Task12',...
     'Task13','Task14','Task15','Task16','Task17');  % as you develop functions, add buttons for them here
  
 % Choice 1 is to exit the program
@@ -21,10 +23,11 @@ while choice ~= 1
            % Display a menu and get a choice
            choice = menu('Choose an option', 'Exit Program', 'Load Image', ...
     'Display Image', 'Mean Filter',' makeBright_L',' makeBright_NL','Invert_L','invert_NL','addRandomNoise_L',...
-    'addRandomNoise_NL','luminance_L','luminance_NL','redFilter','redFilter2');  % as you develop functions, add buttons for them here
+    'addRandomNoise_NL','luminance_L','luminance_NL','redFilter','binaryMask');  % as you develop functions, add buttons for them here
         case 2
            % Load an image
-           image_choice = menu('Choose an image', 'lena1', 'mandril1', 'sully', 'yoda', 'shrek','redBaloon');
+           image_choice = menu('Choose an image', 'lena1', 'mandril1', 'sully', 'yoda', 'shrek','redBaloon',...
+               'wrench1.jpg');
            switch image_choice
                case 1
                    filename = 'lena1.jpg';
@@ -37,7 +40,9 @@ while choice ~= 1
                case 5
                    filename = 'shrek.bmp';
                case 6
-                   filename = 'redBaloon.jpg';
+                   filename = 'redBaloon.jpg';           
+               case 7
+                   filename = 'wrench1.jpg';
                
                % fill in cases for all the images you plan to use
            end
@@ -144,6 +149,8 @@ while choice ~= 1
             drawSubplots(current_img,outputRedFilter);
       
        case 14
+            outputBinaryMask = binaryMask (current_img);
+            drawSubplots(current_img,outputBinaryMask);
          
            
 
@@ -153,6 +160,6 @@ while choice ~= 1
 %     'Display Image', 'Mean Filter');  % as you develop functions, add buttons for them here
     choice = menu('Choose an option', 'Exit Program', 'Load Image', ...
     'Display Image', 'Mean Filter',' makeBright_L',' makeBright_NL','Invert_L','invert_NL','addRandomNoise_L', ...
-    'addRandomNoise_NL','luminance_L','luminance_NL','redFilter','redFilter2','Task11','Task12',...
+    'addRandomNoise_NL','luminance_L','luminance_NL','redFilter','binaryMask','Task11','Task12',...
     'Task13','Task14','Task15','Task16','Task17');  % as you develop functions, add buttons for them here
 end
