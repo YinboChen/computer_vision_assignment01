@@ -6,8 +6,8 @@ function [ outImg ] = makeBright_L(inImg, brightness)
  for i = 1:size(inImg,1)
  %    row
      for j = 1:size(inImg,2)
- %         column        
-         redValue =  inImg(i,j,1) + brightness;
+ %    column        
+         redValue   = inImg(i,j,1) + brightness;
          greenValue = inImg(i,j,2) + brightness;
          blueValue  = inImg(i,j,3) + brightness;
          outImg(i,j,:)=[redValue,greenValue,blueValue];
