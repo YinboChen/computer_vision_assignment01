@@ -155,6 +155,9 @@ while choice ~= 1
             subplot(1,3,2),imshow(outputBinaryMaskCompared)
             subplot(1,3,3),imshow(outputBinaryMask);
 %           drawSubplots(current_img,outputBinaryMask);
+
+       case 15
+           
          
            
 
