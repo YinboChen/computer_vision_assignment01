@@ -12,7 +12,7 @@ clc;
 % Display a menu and get a choice
 choice = menu('Choose an option', 'Exit Program', 'Load Image', ...
     'Display Image', 'Mean Filter',' makeBright_L',' makeBright_NL','Invert_L','invert_NL','addRandomNoise_L', ...
-    'addRandomNoise_NL','luminance_L','luminance_NL','redFilter','binaryMask','Task11','Task12',...
+    'addRandomNoise_NL','luminance_L','luminance_NL','redFilter','binaryMask','gaussFilter','frostyFilter',...
     'Task13','Task14','Task15','Task16','Task17');  % as you develop functions, add buttons for them here
  
 % Choice 1 is to exit the program
@@ -23,7 +23,7 @@ while choice ~= 1
            % Display a menu and get a choice
            choice = menu('Choose an option', 'Exit Program', 'Load Image', ...
     'Display Image', 'Mean Filter',' makeBright_L',' makeBright_NL','Invert_L','invert_NL','addRandomNoise_L',...
-    'addRandomNoise_NL','luminance_L','luminance_NL','redFilter','binaryMask');  % as you develop functions, add buttons for them here
+    'addRandomNoise_NL','luminance_L','luminance_NL','redFilter','binaryMask','gaussFilter','frostyFilter');  % as you develop functions, add buttons for them here
         case 2
            % Load an image
            image_choice = menu('Choose an image', 'lena1', 'mandril1', 'sully', 'yoda', 'shrek','redBaloon',...
@@ -166,6 +166,18 @@ while choice ~= 1
 
        case 15
            
+       case 16
+            n =0;
+            m =0;
+            prompt = {'Input a positive value for n:','Input a positive value for m:'};
+            dlgtitle = 'n by m';
+            dims = 1;
+            answer = inputdlg(prompt,dlgtitle,dims);
+            n = str2num(answer{1});  
+            m = str2num(answer{2}); 
+            outputFrostyFilter = frosty (current_img,n,m);
+            drawSubplots(current_img,outputFrostyFilter,'FrostyFilter image');
+           
          
            
 
@@ -175,6 +187,6 @@ while choice ~= 1
 %     'Display Image', 'Mean Filter');  % as you develop functions, add buttons for them here
     choice = menu('Choose an option', 'Exit Program', 'Load Image', ...
     'Display Image', 'Mean Filter',' makeBright_L',' makeBright_NL','Invert_L','invert_NL','addRandomNoise_L', ...
-    'addRandomNoise_NL','luminance_L','luminance_NL','redFilter','binaryMask','Task11','Task12',...
+    'addRandomNoise_NL','luminance_L','luminance_NL','redFilter','binaryMask','gaussFilter','frostyFilter',...
     'Task13','Task14','Task15','Task16','Task17');  % as you develop functions, add buttons for them here
 end
