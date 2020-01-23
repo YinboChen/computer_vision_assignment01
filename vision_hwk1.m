@@ -165,6 +165,14 @@ while choice ~= 1
             drawSubplots(current_img,outputBinaryMask,'BinaryMask image');
 
        case 15
+            sigma =0;
+            prompt = {'Input a sigma value(a positive value):'};
+            dlgtitle = 'Sigma for GaussFilter';
+            dims = 1;
+            answer = inputdlg(prompt,dlgtitle,dims);
+            sigma = str2num(answer{1});  
+            outputGaussFilter = gaussFilter(current_img,sigma);
+            drawSubplots(current_img,outputGaussFilter,'GaussFilter image');
            
        case 16
             n =0;
@@ -177,6 +185,16 @@ while choice ~= 1
             m = str2num(answer{2}); 
             outputFrostyFilter = frosty (current_img,n,m);
             drawSubplots(current_img,outputFrostyFilter,'FrostyFilter image');
+       
+       case 17
+            factor =0;
+            prompt = {'Input a scale factor:'};
+            dlgtitle = 'Factor for Scale';
+            dims = 1;
+            answer = inputdlg(prompt,dlgtitle,dims);
+            factor = str2num(answer{1});   
+            outputScaleNearest = scaleNearest(current_img,factor);
+            drawSubplots(current_img,outputScaleNearest,'ScaleNearest image'); 
            
          
            

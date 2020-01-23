@@ -1,21 +1,21 @@
-function[ ] = gaussFilter( inImg, sigma)
+function[ outImg ] = gaussFilter( inImg, sigma)
 
 %G(x,y)=exp(-(x^2+y^2)/2*sigma^2)/(2*pi*sigma^2);
 % boxfilter based n = 2* ceil (2* sigma)+1
-inImg = imread('yoda.bmp');
+% inImg = imread('yoda.bmp');
 inImg = im2double(inImg);
 outImg = zeros(size(inImg));
 % size(output)
 % size(inImg)
-sigma =9;
+% For testing let sigma =9;
 n = 2* ceil(2*sigma)+1;
 r =floor((n-1)/2);
 % for testing uses sigma value equ 1.5
 
 for x = 1:n
-    for y  = 0:n
-          G(x,y) = exp(-((x-1)^2+(y-1)^2)/(2*sigma^2))/(2*pi*sigma^2);
-         %G(x,y)=exp(-(x^2+y^2)/2*sigma^2)/(2*pi*sigma^2);
+    for y  = 1:n
+           G(x,y) = exp(-((x-1)^2+(y-1)^2)/(2*sigma^2))/(2*pi*sigma^2);
+%          G(x,y)=exp(-(x^2+y^2)/2*sigma^2)/(2*pi*sigma^2);
          
         
     end
@@ -40,6 +40,9 @@ for i = 1+r : R-r
                  
     end
 end
-        subplot(1,2,1),imshow(inImg);
-        subplot(1,2,2),imshow(outImg);
+%       subplot(1,2,1),imshow(inImg);
+%       subplot(1,2,2),imshow(outImg(r:R-r,r:C-r,:));
+%         outImg(r:R-r,r:C-r,:);
+%       trim the black edge = n/2
+%       subplot(1,2,2),imshow(outImg);
 end
