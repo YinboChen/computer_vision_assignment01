@@ -61,8 +61,16 @@ while choice ~= 1
            % 1. Ask the user for size of kernel
            
            % 2. Call the appropriate function
-           newImage = meanFilter(current_img, k_size); % create your own function for the mean filter
+           % create your own function for the mean filter
            
+            kernel_size = 0;
+            prompt = {'Input the size of the smoothing kernel(a positive integer):'};
+            dlgtitle = 'Smoothing kernel Input';
+            dims = 1;
+            answer = inputdlg(prompt,dlgtitle,dims);
+            kernel_size = str2num(answer{1});
+            output_Mean= meanFilter(current_img, kernel_size);
+            drawSubplots(current_img,output_Mean,'meanFilter image');        
            % 3. Display the old and the new image using subplot
            % ....
            %subplot(...)
@@ -89,7 +97,7 @@ while choice ~= 1
             %input strings to int
             output_L = makeBright_L(current_img,brightness1);
             %call a function
-            drawSubplots(current_img,output_L);
+            drawSubplots(current_img,output_L,'makeBright-L image');
             %side by side plot picture
             
        case 6
@@ -102,41 +110,41 @@ while choice ~= 1
             answer = inputdlg(prompt,dlgtitle,dims);
             brightness2 = str2num(answer{1})
             output_NL= makeBright_NL(current_img, brightness2);
-            drawSubplots(current_img,output_NL);             
+            drawSubplots(current_img,output_NL,'makeBright-NL image');             
         
        case 7
            %Inverts the colors of an image. Use Loops! (Task3)
            outputInvert_L =  invert_L (current_img);
-           drawSubplots(current_img,outputInvert_L);
+           drawSubplots(current_img,outputInvert_L,'Invert-L image');
            
       
        case 8
            %Inverts the colors of an image. Use No Loops! (Task4)
            outputInvert_NL =  invert_NL (current_img);
-           drawSubplots(current_img,outputInvert_NL);
+           drawSubplots(current_img,outputInvert_NL,'Invert-NL image');
             
        case 9
            %Adds random noise to an image. Use Loops! (Task5)
            outputAddNoise_L = addRandomNoise_L (current_img);
-           drawSubplots(current_img,outputAddNoise_L);
+           drawSubplots(current_img,outputAddNoise_L,'AddNoise-L image');
            
            
        case 10
             %Adds random noise to an image. Use  No Loops! (Task6)
            outputAddNoise_NL = addRandomNoise_NL (current_img);
-           drawSubplots(current_img,outputAddNoise_NL);
+           drawSubplots(current_img,outputAddNoise_NL,'AddNoise-NL image');
           
            
        case 11
            %Changing a color image to a gray image. Use Loops! (Task7)
            outputLuminance_L = luminance_L (current_img);
-           drawSubplots(current_img,outputLuminance_L);
+           drawSubplots(current_img,outputLuminance_L,'Luminance-L image');
            
            
        case 12
            %Changing a color image to a gray image. Use No Loops! (Task8)
            outputLuminance_NL = luminance_NL (current_img);
-           drawSubplots(current_img,outputLuminance_NL);
+           drawSubplots(current_img,outputLuminance_NL,'Luminance-NL image');
            
        case 13
             redVal =0.299;
@@ -146,15 +154,15 @@ while choice ~= 1
             answer = inputdlg(prompt,dlgtitle,dims);
             redVal = str2num(answer{1});  
             outputRedFilter = redFilter (current_img,redVal);
-            drawSubplots(current_img,outputRedFilter);
+            drawSubplots(current_img,outputRedFilter,'RedFilter image');
       
        case 14
             outputBinaryMask = binaryMask (current_img);
             outputBinaryMaskCompared = binaryMaskCompared (current_img);
-            subplot(1,3,1),imshow(current_img)
-            subplot(1,3,2),imshow(outputBinaryMaskCompared)
-            subplot(1,3,3),imshow(outputBinaryMask);
-%           drawSubplots(current_img,outputBinaryMask);
+%             subplot(1,3,1),imshow(current_img)
+%             subplot(1,3,2),imshow(outputBinaryMaskCompared)
+%             subplot(1,3,3),imshow(outputBinaryMask);
+            drawSubplots(current_img,outputBinaryMask,'BinaryMask image');
 
        case 15
            
