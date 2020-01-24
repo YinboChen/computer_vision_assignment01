@@ -13,7 +13,7 @@ clc;
 choice = menu('Choose an option', 'Exit Program', 'Load Image', ...
     'Display Image', 'Mean Filter',' makeBright_L',' makeBright_NL','Invert_L','invert_NL','addRandomNoise_L', ...
     'addRandomNoise_NL','luminance_L','luminance_NL','redFilter','binaryMask','gaussFilter','frostyFilter',...
-    'Task13','Task14','Task15','Task16','Task17');  % as you develop functions, add buttons for them here
+    'scaleNearest','scaleBilinear','Task15','Task16','Task17');  % as you develop functions, add buttons for them here
  
 % Choice 1 is to exit the program
 while choice ~= 1
@@ -23,7 +23,8 @@ while choice ~= 1
            % Display a menu and get a choice
            choice = menu('Choose an option', 'Exit Program', 'Load Image', ...
     'Display Image', 'Mean Filter',' makeBright_L',' makeBright_NL','Invert_L','invert_NL','addRandomNoise_L',...
-    'addRandomNoise_NL','luminance_L','luminance_NL','redFilter','binaryMask','gaussFilter','frostyFilter');  % as you develop functions, add buttons for them here
+    'addRandomNoise_NL','luminance_L','luminance_NL','redFilter','binaryMask','gaussFilter','frostyFilter','scaleNearest'...
+    ,'scaleBilinear');  % as you develop functions, add buttons for them here
         case 2
            % Load an image
            image_choice = menu('Choose an image', 'lena1', 'mandril1', 'sully', 'yoda', 'shrek','redBaloon',...
@@ -196,6 +197,15 @@ while choice ~= 1
             outputScaleNearest = scaleNearest(current_img,factor);
             drawSubplots(current_img,outputScaleNearest,'ScaleNearest image'); 
            
+       case 18
+            factor =0;
+            prompt = {'Input a scale factor:'};
+            dlgtitle = 'Factor for Scale';
+            dims = 1;
+            answer = inputdlg(prompt,dlgtitle,dims);
+            factor = str2num(answer{1});   
+            outputScaleBilinear = scaleBilinear(current_img,factor);
+            drawSubplots(current_img,outputScaleBilinear,'ScaleBilinear image'); 
          
            
 
@@ -206,5 +216,5 @@ while choice ~= 1
     choice = menu('Choose an option', 'Exit Program', 'Load Image', ...
     'Display Image', 'Mean Filter',' makeBright_L',' makeBright_NL','Invert_L','invert_NL','addRandomNoise_L', ...
     'addRandomNoise_NL','luminance_L','luminance_NL','redFilter','binaryMask','gaussFilter','frostyFilter',...
-    'Task13','Task14','Task15','Task16','Task17');  % as you develop functions, add buttons for them here
+    'scaleNearest','scaleBilinear','Task15','Task16','Task17');  % as you develop functions, add buttons for them here
 end

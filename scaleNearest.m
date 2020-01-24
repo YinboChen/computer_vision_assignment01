@@ -1,28 +1,22 @@
-% function [outImg] = scaleNearest( inImg, factor)
-function [] = scaleNearest( inImg, factor)
-inImg = imread('yoda.bmp');
-f =2;
+function [outImg] = scaleNearest( inImg, factor)
+% inImg = imread('yoda.bmp');
+f = factor;
+
 R = size(inImg,1);
 C = size(inImg,2);
 % original image R & C
-Rt = R * f;
-Ct = C * f;
-% precessed image R & C
-% outImg = zeros(f*R,f*C,3);
+Rt = floor(R * f);
+Ct = floor(C * f);
+% processed image R & C
+output = zeros(Rt,Ct,3);
+outImg = uint8(output);
 
-for i = 1 : R
-    for j = 1:C
-        temp(i,j,:) = inImg(i,j,:);
-            for m = 1 :f
-                for n = 1:f
-                    box(m,n,:)= temp(:,:,:);
-                    box = box(m,n,:);
-                end
-            end
-            
-            
-            
+for i = 1 : Rt
+    for j = 1:Ct
+         r1 = max(1,round(i/f));        
+         c1 = max(1,round(j/f));
+         outImg(i,j,:)=inImg(r1,c1,:);
     end
 end
- imshow(outImg);
+
 end
