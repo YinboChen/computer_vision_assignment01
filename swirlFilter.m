@@ -1,19 +1,25 @@
-function [ ] = swirlFilter(inImg, factor, ox, oy)
+function [outImg] = swirlFilter(inImg, factor, ox, oy)
 %c = c1*cosa-r1*sina;
 %r = c1*sina-r1*cosa;
 %|AB|= squrt((x1-x2)^2+(y1-y2)^2);
 
 
-inImg = imread('yoda.bmp');
+% inImg = imread('yoda.bmp');
 inImg = uint8(inImg);
 % imshow(inImg);
-ox =350;
-oy =400;
-% f =factor;
-f =0.3;
+f = factor;
+ox = ox;
+oy = oy;
 %define factor value from ? to ?
 R = size(inImg,1);
 C = size(inImg,2);
+
+ if ox > C || oy >R
+     disp('value is out of rage. Please input ox between 1-',C,'\n','input oy between 1-',R);
+     ox = 1/2*C;
+     oy = 1/2*R;
+ end
+
 output = zeros(R,C,3);
 outImg = uint8(output);
 u = C - ox;
@@ -36,7 +42,8 @@ for i = 1: R
             elseif AB <= radi
    
 
-                thetaT = 2*pi*(AB/radi)^f+(theta)*f;
+                 thetaT = (AB/radi)*(theta)*f;
+%                   thetaT = (AB/radi^f)*theta;
                 
                 if i == oy && j == ox
                     outImg(i,j,:) = inImg(i,j,:);
@@ -52,6 +59,6 @@ for i = 1: R
               
         end
 end
-imshow(outImg);
+% imshow(outImg);
 
 end

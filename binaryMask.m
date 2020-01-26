@@ -50,5 +50,5 @@ function [outImg] = binaryMask (inImg)
         end
        
    end
-  
+%   imshow(outImg);
 end

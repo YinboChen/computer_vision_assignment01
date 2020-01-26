@@ -1,8 +1,9 @@
 % This script creates a menu driven application
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%
-%
+%CSCI 5722 Computer Vision
 % Yinbo Chen
+% Professor: Fleming
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 clear all;
@@ -159,7 +160,7 @@ while choice ~= 1
       
        case 14
             outputBinaryMask = binaryMask (current_img);
-            outputBinaryMaskCompared = binaryMaskCompared (current_img);
+%             outputBinaryMaskCompared = binaryMaskCompared (current_img);
 %             subplot(1,3,1),imshow(current_img)
 %             subplot(1,3,2),imshow(outputBinaryMaskCompared)
 %             subplot(1,3,3),imshow(outputBinaryMask);
@@ -208,7 +209,20 @@ while choice ~= 1
             drawSubplots(current_img,outputScaleBilinear,'ScaleBilinear image'); 
          
        case 19
-           
+            % This method applies a swirl filter to the current image and returns ...
+%             the new image. The swirl filter is a warp or a distortion. 
+%           Firstly,Must load a image, then continuing this function.   
+
+            factor =0;
+            prompt = {'Input a scale factor:','Input the X coordinate X:','Input the Y coordinate Y:'};
+            dlgtitle = 'Factors for SwitlFilter';
+            dims = 1;
+            answer = inputdlg(prompt,dlgtitle,dims);
+            factor = str2num(answer{1});  
+            ox = str2num(answer{2});
+            oy = str2num(answer{3});
+            outputSwirlFilter = swirlFilter(current_img,factor,ox,oy);
+            drawSubplots(current_img,outputSwirlFilter,'SwirlFilter image');            
        case 20
             % famousMe function
             me = imread('yinbo2.jpg');
