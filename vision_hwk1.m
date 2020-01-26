@@ -13,7 +13,7 @@ clc;
 choice = menu('Choose an option', 'Exit Program', 'Load Image', ...
     'Display Image', 'Mean Filter',' makeBright_L',' makeBright_NL','Invert_L','invert_NL','addRandomNoise_L', ...
     'addRandomNoise_NL','luminance_L','luminance_NL','redFilter','binaryMask','gaussFilter','frostyFilter',...
-    'scaleNearest','scaleBilinear','Task15','Task16','Task17');  % as you develop functions, add buttons for them here
+    'scaleNearest','scaleBilinear','swirlFilter','famousMe');  % as you develop functions, add buttons for them here
  
 % Choice 1 is to exit the program
 while choice ~= 1
@@ -24,7 +24,7 @@ while choice ~= 1
            choice = menu('Choose an option', 'Exit Program', 'Load Image', ...
     'Display Image', 'Mean Filter',' makeBright_L',' makeBright_NL','Invert_L','invert_NL','addRandomNoise_L',...
     'addRandomNoise_NL','luminance_L','luminance_NL','redFilter','binaryMask','gaussFilter','frostyFilter','scaleNearest'...
-    ,'scaleBilinear');  % as you develop functions, add buttons for them here
+    ,'scaleBilinear','swirlFilter','famousMe');  % as you develop functions, add buttons for them here
         case 2
            % Load an image
            image_choice = menu('Choose an image', 'lena1', 'mandril1', 'sully', 'yoda', 'shrek','redBaloon',...
@@ -207,6 +207,17 @@ while choice ~= 1
             outputScaleBilinear = scaleBilinear(current_img,factor);
             drawSubplots(current_img,outputScaleBilinear,'ScaleBilinear image'); 
          
+       case 19
+           
+       case 20
+            % famousMe function
+            me = imread('yinbo2.jpg');
+            background = imread('yoda.bmp');
+            outputFamousMe = famousMe(me,background,100,100);
+            subplot(1,3,1),imshow(me),title('The original image')
+            subplot(1,3,2),imshow(background),title('The original image')
+            subplot(1,3,3),imshow(outputFamousMe),title('outputFamousMe image');
+            
            
 
    end
@@ -216,5 +227,5 @@ while choice ~= 1
     choice = menu('Choose an option', 'Exit Program', 'Load Image', ...
     'Display Image', 'Mean Filter',' makeBright_L',' makeBright_NL','Invert_L','invert_NL','addRandomNoise_L', ...
     'addRandomNoise_NL','luminance_L','luminance_NL','redFilter','binaryMask','gaussFilter','frostyFilter',...
-    'scaleNearest','scaleBilinear','Task15','Task16','Task17');  % as you develop functions, add buttons for them here
+    'scaleNearest','scaleBilinear','swirlFilter','famousMe');  % as you develop functions, add buttons for them here
 end

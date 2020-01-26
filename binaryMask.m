@@ -1,5 +1,5 @@
 function [outImg] = binaryMask (inImg)
-% inImg = imread('sully.bmp');
+% inImg = imread('yinbo2.jpg');
 % for testing
      if size(inImg,3) ~= 1
         inImg = luminance_NL (inImg);   
