@@ -3,9 +3,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%
 % CSCI 5722 Computer Vision
 % Name: Yinbo Chen
-% Professor: Ioana Fleming
-% Assignment: HW1 due 1/26 2020
-% Purpose: For better understanding of image processing 
+% Professor: Fleming
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 clear all;
