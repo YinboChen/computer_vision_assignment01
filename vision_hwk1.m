@@ -1,7 +1,7 @@
 % This script creates a menu driven application
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%
-%CSCI 5722 Computer Vision
+% CSCI 5722 Computer Vision
 % Yinbo Chen
 % Professor: Fleming
 %
@@ -196,7 +196,8 @@ while choice ~= 1
             answer = inputdlg(prompt,dlgtitle,dims);
             factor = str2num(answer{1});   
             outputScaleNearest = scaleNearest(current_img,factor);
-            drawSubplots(current_img,outputScaleNearest,'ScaleNearest image'); 
+            imshowpair(current_img,outputScaleNearest,'montage');
+            figure,drawSubplots(current_img,outputScaleNearest,'ScaleNearest image'); 
            
        case 18
             factor =0;
@@ -206,8 +207,9 @@ while choice ~= 1
             answer = inputdlg(prompt,dlgtitle,dims);
             factor = str2num(answer{1});   
             outputScaleBilinear = scaleBilinear(current_img,factor);
-            drawSubplots(current_img,outputScaleBilinear,'ScaleBilinear image'); 
-         
+            imshowpair(current_img,outputScaleBilinear,'montage');
+            figure,drawSubplots(current_img,outputScaleBilinear,'ScaleBilinear image'); 
+      
        case 19
             % This method applies a swirl filter to the current image and returns ...
 %             the new image. The swirl filter is a warp or a distortion. 
@@ -227,7 +229,13 @@ while choice ~= 1
             % famousMe function
             me = imread('yinbo2.jpg');
             background = imread('yoda.bmp');
-            outputFamousMe = famousMe(me,background,100,100);
+            prompt = {'Input the X coordinate X:','Input the Y coordinate Y:'};
+            dlgtitle = 'Factors for FamousMe';
+            dims = 1;
+            answer = inputdlg(prompt,dlgtitle,dims); 
+            ox = str2num(answer{1});
+            oy = str2num(answer{2});
+            outputFamousMe = famousMe(me,background,ox,oy);
             subplot(1,3,1),imshow(me),title('The original image')
             subplot(1,3,2),imshow(background),title('The original image')
             subplot(1,3,3),imshow(outputFamousMe),title('outputFamousMe image');

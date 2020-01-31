@@ -1,0 +1,2 @@
+inImg = imread('lena1.jpg');
+inv(inImg(:,:,1))                                                                                                                                                                                                                                                                                                   

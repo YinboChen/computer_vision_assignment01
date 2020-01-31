@@ -15,7 +15,7 @@ R = size(inImg,1);
 C = size(inImg,2);
 
  if ox > C || oy >R
-     disp('value is out of rage. Please input ox between 1-',C,'\n','input oy between 1-',R);
+     disp('value is out of rage.');
      ox = 1/2*C;
      oy = 1/2*R;
  end
@@ -42,7 +42,7 @@ for i = 1: R
             elseif AB <= radi
    
 
-                 thetaT = (AB/radi)*(theta)*f;
+                    thetaT = (AB/radi)*(theta)*f;
 %                   thetaT = (AB/radi^f)*theta;
                 
                 if i == oy && j == ox

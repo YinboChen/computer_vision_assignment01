@@ -3,10 +3,10 @@ function[ outImg ] = invert_L (inImg)
  %    row
         for j = 1:size(inImg,2)
  %         column        
-             redValue   = 255 - inImg(i,j,1);
-             greenValue = 255 - inImg(i,j,2);
-             blueValue  = 255 - inImg(i,j,3);
-             outImg(i,j,:)=[redValue,greenValue,blueValue];
+              redValue   = 255 - inImg(i,j,1);
+              greenValue = 255 - inImg(i,j,2);
+              blueValue  = 255 - inImg(i,j,3);
+              outImg(i,j,:)=[redValue,greenValue,blueValue];
          
         end
      
